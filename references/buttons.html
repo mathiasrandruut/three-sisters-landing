@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBF7EF;--ink:#1E1B17;--maroon:#7A1F1F;--maroon-dark:#641616;--gold:#c79a3e}
+*{margin:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);font-family:"Inter",sans-serif;padding:50px 60px}
+h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:34px;margin-bottom:6px}
+.note{color:#8a8275;font-size:14px;margin-bottom:40px}
+.row{display:grid;grid-template-columns:230px 1fr;align-items:center;gap:30px;padding:26px 0;border-top:1px solid #e3dbcb}
+.label{font-size:13px}
+.label b{display:block;font-size:15px;font-weight:600;margin-bottom:3px}
+.label span{color:#8a8275}
+.demo{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+a{text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.7em}
+
+/* 1 — current pill */
+.b1{background:var(--maroon);color:#fff;font-weight:600;font-size:18px;padding:18px 34px;border-radius:50px}
+.b1o{background:var(--ink);color:#fff;font-weight:600;font-size:18px;padding:18px 34px;border-radius:50px}
+
+/* 2 — sharp rectangle, uppercase letterspaced (Four Seasons / Ritz) */
+.b2{background:var(--maroon);color:#fff;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:20px 40px;border-radius:0}
+.b2o{background:transparent;color:var(--maroon);border:1.5px solid var(--maroon);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:18.5px 40px;border-radius:0}
+
+/* 3 — soft rectangle 4px (Belmond) */
+.b3{background:var(--maroon);color:#fff;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:19px 38px;border-radius:4px}
+.b3o{background:transparent;color:var(--ink);border:1.5px solid var(--ink);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:17.5px 38px;border-radius:4px}
+
+/* 4 — minimal underline text link (Aman) */
+.b4{color:var(--ink);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px 2px;border-bottom:1.5px solid var(--maroon)}
+.b4g{color:var(--maroon);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:10px 2px;border-bottom:1px solid #c9bfa8}
+
+/* 5 — bordered pill thin (soft luxe) */
+.b5{background:var(--maroon);color:#fff;font-size:14px;font-weight:600;letter-spacing:.08em;padding:17px 36px;border-radius:50px}
+.b5o{background:transparent;color:var(--maroon);border:1px solid var(--maroon);font-size:14px;font-weight:600;letter-spacing:.08em;padding:16px 36px;border-radius:50px}
+
+/* 6 — serif label, sharp (editorial luxe) */
+.b6{background:var(--ink);color:#fff;font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:.02em;padding:15px 40px;border-radius:0}
+.b6o{background:transparent;color:var(--ink);border:1.5px solid var(--ink);font-family:"Cormorant Garamond",serif;font-size:21px;padding:13.5px 40px;border-radius:0}
+.arw{font-size:1.05em}
+</style></head><body>
+<h1>Button shapes — luxury hotel references</h1>
+<div class="note">Primary + secondary pairing for each. Same copy, same colours — only shape / type treatment differs.</div>
+
+<div class="row"><div class="label"><b>1 · Current — pill</b><span>Rounded, mixed-case. Modern/startup feel.</span></div>
+  <div class="demo"><a class="b1">Book your stay <span class="arw">→</span></a><a class="b1o">Explore the rooms <span class="arw">→</span></a></div></div>
+
+<div class="row"><div class="label"><b>2 · Sharp rectangle</b><span>Uppercase, wide letter-spacing. Four Seasons / Ritz.</span></div>
+  <div class="demo"><a class="b2">Book your stay <span class="arw">→</span></a><a class="b2o">Explore the rooms</a></div></div>
+
+<div class="row"><div class="label"><b>3 · Soft rectangle (4px)</b><span>Uppercase, calmer corners. Belmond.</span></div>
+  <div class="demo"><a class="b3">Book your stay <span class="arw">→</span></a><a class="b3o">Explore the rooms</a></div></div>
+
+<div class="row"><div class="label"><b>4 · Minimal underline</b><span>No box — letter-spaced link. Aman / ultra-minimal.</span></div>
+  <div class="demo"><a class="b4">Book your stay <span class="arw">→</span></a><a class="b4g">Explore the rooms</a></div></div>
+
+<div class="row"><div class="label"><b>5 · Thin pill</b><span>Soft shape, light letter-spacing. Keeps round but quieter.</span></div>
+  <div class="demo"><a class="b5">Book your stay <span class="arw">→</span></a><a class="b5o">Explore the rooms</a></div></div>
+
+<div class="row"><div class="label"><b>6 · Serif label, sharp</b><span>Cormorant in the button. Editorial / distinctive.</span></div>
+  <div class="demo"><a class="b6">Book your stay <span class="arw">→</span></a><a class="b6o">Explore the rooms</a></div></div>
+
+</body></html>

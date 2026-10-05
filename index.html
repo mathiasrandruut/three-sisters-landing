@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Three Sisters Hotel · Pikk 71, Tallinn Old Town</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF7EF;
+    --cream-2:#F3ECDF;
+    --ink:#1E1B17;
+    --ink-soft:#4a443c;
+    --muted:#8a8275;
+    --maroon:#7A1F1F;
+    --maroon-dark:#641616;
+    --gold:#c79a3e;
+    --star:#e0a93b;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Jost",system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.01em}
+  h2{font-size:clamp(32px,4.4vw,54px)}
+  p{color:var(--ink-soft)}
+  p strong,.sub strong{color:var(--ink);font-weight:600}
+  a{color:inherit;text-decoration:none}
+  .lead{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);font-style:italic;color:var(--ink-soft)}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.7em;font-family:var(--sans);font-weight:600;
+       cursor:pointer;border:1.5px solid transparent;font-size:13px;line-height:1;letter-spacing:.14em;text-transform:uppercase;
+       padding:18px 38px;min-width:234px;border-radius:0;transition:background .18s,color .18s,transform .18s,box-shadow .18s,border-color .18s}
+  .btn .arw{font-size:1.3em;transition:transform .18s}
+  .btn:hover .arw{transform:translateX(4px)}
+  .btn-primary{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+  .btn-primary:hover{background:var(--maroon-dark);border-color:var(--maroon-dark);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(122,31,31,.7)}
+  .btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn-dark:hover{background:#000;border-color:#000;transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+  .btn-sm{font-size:12px;padding:13px 24px;min-width:0;letter-spacing:.12em}
+
+  /* ---------- header ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(251,247,239,.9);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:box-shadow .25s,border-color .25s}
+  header.solid{box-shadow:0 1px 22px -12px rgba(40,30,15,.45);border-color:#eadfca}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:25px;letter-spacing:.14em;color:var(--ink)}
+  .logo .mark{font-weight:600;font-size:27px;color:var(--maroon)}
+  .nav-links{display:flex;align-items:center;gap:30px;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+  .nav-links a{color:var(--ink);transition:color .2s}
+  .nav-links a:hover{color:var(--maroon)}
+  .nav-links .btn{color:#fff!important}
+  @media(max-width:860px){.nav-links a:not(.navbook){display:none}}
+
+  /* ---------- hero (split editorial) ---------- */
+  .hero{padding:124px 0 66px}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:72px;align-items:center}
+  .rate-row{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .rate-row .stars{display:inline-flex;gap:2px}
+  .rate-row .stars svg{width:18px;height:18px;color:var(--star)}
+  .rate-row span{font-size:14px;color:var(--ink-soft);font-weight:500;letter-spacing:.015em}
+  .hero h1{font-size:clamp(44px,5.3vw,74px);max-width:14ch;margin-bottom:24px}
+  .hero h1 em{font-style:italic;color:var(--maroon)}
+  .hero .sub{font-size:clamp(18px,1.55vw,21px);max-width:46ch;margin-bottom:34px;line-height:1.55}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:16px}
+  .hero-photo{position:relative;border-radius:0;overflow:hidden;aspect-ratio:3/4;border:1px solid #ddd2bc;
+              box-shadow:0 30px 60px -42px rgba(50,35,15,.55)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .hero-badge{position:absolute;left:18px;bottom:18px;
+              background:var(--cream);border-radius:0;padding:12px 17px;box-shadow:0 14px 30px -16px rgba(50,35,15,.5)}
+  .hero-badge .stars{display:flex;gap:2px;margin-bottom:6px}
+  .hero-badge .stars svg{width:15px;height:15px;color:var(--star)}
+  .hero-badge b{font-family:var(--serif);font-size:19px;line-height:1}
+  .hero-badge small{font-size:12px;color:var(--muted);letter-spacing:.02em;font-family:var(--sans)}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:42px}.hero-photo{max-width:420px;margin:0 auto}}
+  @media(max-width:560px){.btn{min-width:0;width:100%}.hero-ctas{flex-direction:column}}
+
+  /* ---------- featured strip (under hero) ---------- */
+  .featured{background:transparent}
+  .featured .wrap{display:flex;align-items:center;justify-content:center;gap:16px 44px;flex-wrap:wrap;padding:40px 32px 34px}
+  .featured .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .featured .plogo{height:21px;width:auto;opacity:.72;filter:grayscale(1)}
+  .featured .m{font-family:var(--serif);font-size:19px;color:#4a443c;white-space:nowrap}
+  .press .plogo{height:30px;width:auto;opacity:.78;filter:grayscale(1)}
+
+  /* ---------- booking bar (overlaps hero) ---------- */
+  .bookwrap{position:relative;z-index:30;margin-top:4px}
+  .book-prompt{text-align:center;margin-bottom:18px}
+  .book-prompt h3{font-size:clamp(25px,2.7vw,34px)}
+  .book-prompt p{font-size:15px;color:var(--muted);margin-top:6px}
+  .book-prompt p strong{color:var(--maroon);font-weight:600}
+  .bookbar{background:#fff;border:1px solid #ddd2bc;border-radius:0;padding:16px;display:grid;
+           grid-template-columns:1fr 1fr 1fr auto;gap:8px;box-shadow:0 30px 60px -30px rgba(50,35,15,.5)}
+  .bookbar .fld{display:flex;flex-direction:column;justify-content:center;padding:10px 18px;position:relative}
+  .bookbar .fld:not(:last-child)::after{content:"";position:absolute;right:0;top:18%;height:64%;width:1px;background:var(--line,#eadfca)}
+  .bookbar label{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:600;display:flex;align-items:center;gap:6px}
+  .bookbar label svg{width:14px;height:14px;color:var(--maroon)}
+  .bookbar input,.bookbar select{border:none;background:transparent;font-family:var(--serif);font-size:20px;color:var(--ink);outline:none;width:100%}
+  @media(max-width:820px){.bookbar{grid-template-columns:1fr 1fr}.bookbar .fld::after{display:none}.bookbar .btn{grid-column:1/-1;width:100%}}
+
+  /* ---------- facts ---------- */
+  .facts{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:70px 0 10px}
+  .fact{text-align:center;padding:0 10px}
+  .fact .ic{width:40px;height:40px;margin:0 auto 14px;color:var(--maroon)}
+  .fact .ic svg{width:100%;height:100%;fill:currentColor}
+  .fact b{display:block;font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.1}
+  .fact span{font-size:13.5px;color:var(--muted)}
+  @media(max-width:820px){.facts{grid-template-columns:repeat(2,1fr);gap:34px 20px}.fact:last-child{grid-column:1/-1}}
+
+  /* ---------- sections ---------- */
+  section{padding:92px 0}
+  .band{background:var(--cream-2)}
+  .ink-sec{background:var(--ink);color:#fff}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .split.flip > div:first-child{order:2}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:34px}.split.flip > div:first-child{order:0}}
+  .split figure{margin:0}
+  .split img{width:100%;height:100%;max-height:560px;object-fit:cover;border-radius:0;border:1px solid #ddd2bc;display:block}
+  .split figcaption{margin-top:13px;font-family:var(--serif);font-style:italic;font-size:15.5px;color:var(--muted)}
+  .split h2{margin-bottom:22px}
+  .split p{margin-top:18px;font-size:17.5px}
+  .mini{font-size:14.5px;color:var(--muted)}
+  .mini b{color:var(--ink)}
+
+  .sec-head{max-width:760px;margin:0 auto 54px;text-align:center}
+  .sec-head h2{margin-bottom:16px}
+  .sec-head.light h2{color:#fff}
+  .sec-head.light p{color:rgba(255,255,255,.75)}
+
+  /* ---------- gallery ---------- */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 24px}
+  .gal figure{margin:0}
+  .gal .frame{overflow:hidden;border:1px solid #ddd2bc;border-radius:0;aspect-ratio:4/3}
+  .gal figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .gal figure:hover img{transform:scale(1.04)}
+  .gal figcaption{margin-top:13px;font-family:var(--serif);font-style:italic;font-size:15.5px;color:var(--muted)}
+  @media(max-width:860px){.gal{grid-template-columns:1fr 1fr;gap:24px 18px}}
+  @media(max-width:520px){.gal{grid-template-columns:1fr}}
+
+  /* ---------- perks ---------- */
+  .perks{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .perk{background:#fff;border:1px solid #e6ddcc;border-radius:0;padding:34px 28px}
+  .perk .ic{width:44px;height:44px;color:var(--maroon);margin-bottom:18px}
+  .perk .ic svg{width:100%;height:100%;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .perk h3{font-size:24px;margin-bottom:9px}
+  .perk p{font-size:15px}
+  .perk.feature{background:var(--maroon);color:#fff}
+  .perk.feature .ic{color:#fff}
+  .perk.feature h3{color:#fff}
+  .perk.feature p{color:#f3d9c9}
+  .perk.feature p strong{color:#fff}
+  @media(max-width:860px){.perks{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.perks{grid-template-columns:1fr}}
+
+  /* ---------- reviews ---------- */
+  .reviews{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .rev{background:#fff;border:1px solid #e6ddcc;border-radius:0;padding:30px 24px;text-align:center}
+  .rev .plat{height:26px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;letter-spacing:-.01em}
+  .rev .stars{display:flex;justify-content:center;gap:2px;margin-bottom:10px}
+  .rev .stars svg{width:18px;height:18px;color:var(--star)}
+  .rev .score{font-family:var(--serif);font-size:40px;color:var(--ink);line-height:1}
+  .rev .score small{font-size:17px;color:var(--muted)}
+  .rev .q{font-family:var(--serif);font-style:italic;font-size:19px;margin:8px 0 6px;color:var(--maroon)}
+  .rev .cnt{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  /* platform wordmark colors */
+  .lg-booking{color:#003b95}
+  .lg-expedia{color:#00355f}
+  .lg-google span:nth-child(1){color:#4285F4}.lg-google span:nth-child(2){color:#EA4335}.lg-google span:nth-child(3){color:#FBBC05}
+  .lg-google span:nth-child(4){color:#4285F4}.lg-google span:nth-child(5){color:#34A853}.lg-google span:nth-child(6){color:#EA4335}
+  .lg-trip{color:#00a680;display:inline-flex;align-items:center;gap:6px}
+  .lg-trip .owl{width:20px;height:20px;border-radius:50%;background:#00a680;position:relative;display:inline-block}
+  .lg-trip .owl::before,.lg-trip .owl::after{content:"";position:absolute;top:6px;width:5px;height:5px;border-radius:50%;background:#fff}
+  .lg-trip .owl::before{left:4px}.lg-trip .owl::after{right:4px}
+
+  .press{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 46px;margin-top:56px;opacity:.8}
+  .press .m{font-family:var(--serif);font-size:24px;color:var(--ink);letter-spacing:.01em;white-space:nowrap}
+  .press .m.boxed{border:2px solid var(--ink);padding:4px 12px;font-weight:600;font-size:18px;letter-spacing:.14em;text-transform:uppercase}
+  .press-label{text-align:center;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px;font-weight:600}
+  @media(max-width:820px){.reviews{grid-template-columns:1fr 1fr}}
+
+  /* ---------- cta band ---------- */
+  .cta-band{position:relative;color:#fff;text-align:center;overflow:hidden}
+  .cta-band .bg{position:absolute;inset:0}
+  .cta-band .bg img{width:100%;height:100%;object-fit:cover}
+  .cta-band .scrim{position:absolute;inset:0;background:rgba(20,14,8,.62)}
+  .cta-band .inner{position:relative;z-index:2;padding:110px 0}
+  .cta-band h2{color:#fff;margin-bottom:12px}
+  .cta-band p{color:rgba(255,255,255,.85);margin-bottom:30px;font-size:19px}
+
+  /* final booking */
+  .book-final{text-align:center}
+  .book-final .bookbar{max-width:980px;margin:40px auto 0;text-align:left}
+  .micro{font-size:14px;color:var(--muted);margin-top:20px}
+
+  /* footer */
+  footer{background:var(--ink);color:#e4dccc;padding:66px 0 34px}
+  footer p{color:#e4dccc}
+  footer a{color:#e4dccc}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px}
+  footer .logo{color:#fff;margin-bottom:16px}
+  footer .logo .mark{color:var(--gold)}
+  .foot-grid h4{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);margin-bottom:15px;font-weight:600}
+  .foot-grid a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid #4a443a;margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#b3aa99}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr;gap:30px}}
+</style>
+</head>
+<body>
+
+<!-- reusable star symbol -->
+<svg width="0" height="0" style="position:absolute"><symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.26 6.85.72-5.12 4.6 1.46 6.72L12 17.77 5.91 20.3l1.46-6.72L2.25 8.98l6.85-.72z"/></symbol></svg>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="logo" href="#top"><span class="mark">3S</span>THREE SISTERS</a>
+    <nav class="nav-links">
+      <a href="#houses">The Houses</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#breakfast">Breakfast</a>
+      <a href="#meetings">Meetings</a>
+      <a class="btn btn-primary btn-sm navbook" href="#book">Book a room <span class="arw">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="rate-row">
+        <span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+        <span>4.8 · Loved by 1,000+ guests</span>
+      </div>
+      <h1>Boutique luxury behind <em>medieval walls.</em></h1>
+      <p class="sub">Sleep inside 14th-century merchant houses in the <strong>heart of Tallinn's Old Town</strong> — only 23 intimate rooms, each with its own quiet story to tell.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#book">Book your stay <span class="arw">→</span></a>
+        <a class="btn btn-outline" href="#rooms">Explore the rooms <span class="arw">→</span></a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-photo">
+        <img src="https://www.threesistershotel.ee/img/DSCF4930.jpg" alt="The three gabled merchant houses on Pikk Street, Tallinn Old Town">
+        <div class="hero-badge">
+          <div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div>
+          <b>4.8</b> <small>· 1,000+ guest reviews</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="featured">
+  <div class="wrap">
+    <span class="lbl">As featured in</span>
+    <img class="plogo" data-name="Michelin Guide" src="logos/michelin.svg" alt="Michelin Guide">
+    <img class="plogo" data-name="Condé Nast Traveler" src="logos/conde-nast-traveler.svg" alt="Condé Nast Traveler">
+    <img class="plogo" data-name="The Telegraph" src="logos/telegraph.svg" alt="The Telegraph">
+    <img class="plogo" data-name="The Times" src="logos/the-times.svg" alt="The Times">
+  </div>
+</div>
+
+<div class="wrap bookwrap">
+  <div class="book-prompt">
+    <h3>Ready for your Old Town escape?</h3>
+    <p>Pick your dates — <strong>best rate guaranteed</strong>, every direct-booking perk applied automatically.</p>
+  </div>
+  <div class="bookbar" id="book-top">
+    <div class="fld"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Check in</label><input type="date"></div>
+    <div class="fld"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Check out</label><input type="date"></div>
+    <div class="fld"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 11a3 3 0 0 0 0-6M21 20a5 5 0 0 0-4-4.9"/></svg>Guests</label>
+      <select><option>2 guests</option><option>1 guest</option><option>3 guests</option><option>4 guests</option></select>
+    </div>
+    <button class="btn btn-primary">Check availability <span class="arw">→</span></button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="facts">
+    <div class="fact">
+      <div class="ic"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M240,210H222V96a14,14,0,0,0-14-14H142V32a14,14,0,0,0-21.77-11.64l-80,53.33A14,14,0,0,0,34,85.34V210H16a6,6,0,0,0,0,12H240a6,6,0,0,0,0-12ZM208,94a2,2,0,0,1,2,2V210H142V94ZM46,85.34a2,2,0,0,1,.89-1.66l80-53.34A2,2,0,0,1,130,32V210H46ZM110,112v16a6,6,0,0,1-12,0V112a6,6,0,0,1,12,0Zm-32,0v16a6,6,0,0,1-12,0V112a6,6,0,0,1,12,0Zm0,56v16a6,6,0,0,1-12,0V168a6,6,0,0,1,12,0Zm32,0v16a6,6,0,0,1-12,0V168a6,6,0,0,1,12,0Z"/></svg></div>
+      <b>Three houses</b><span>14th—16th century</span>
+    </div>
+    <div class="fact">
+      <div class="ic"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M216,74H30V48a6,6,0,0,0-12,0V208a6,6,0,0,0,12,0V174H242v34a6,6,0,0,0,12,0V112A38,38,0,0,0,216,74ZM30,86h76v76H30Zm88,76V86h98a26,26,0,0,1,26,26v50Z"/></svg></div>
+      <b>23 rooms & suites</b><span>Two signature suites</span>
+    </div>
+    <div class="fact">
+      <div class="ic"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M134,80v44.6l37.09,22.25a6,6,0,0,1-6.18,10.3l-40-24A6,6,0,0,1,122,128V80a6,6,0,0,1,12,0Zm-6-46A93.4,93.4,0,0,0,61.51,61.56c-8.58,8.68-16,17-23.51,25.8V64a6,6,0,0,0-12,0v40a6,6,0,0,0,6,6H72a6,6,0,0,0,0-12H44.73C52.86,88.29,60.79,79.35,70,70a82,82,0,1,1,1.7,117.62,6,6,0,1,0-8.24,8.72A94,94,0,1,0,128,34Z"/></svg></div>
+      <b>Restored 1999—2003</b><span>Reopened as a hotel</span>
+    </div>
+    <div class="fact">
+      <div class="ic"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M216,218H198V114.49l11.9-11.91a13.9,13.9,0,0,0,4.1-9.89V48a14,14,0,0,0-14-14H176a6,6,0,0,0-6,6V66H150V40a6,6,0,0,0-6-6H112a6,6,0,0,0-6,6V66H86V40a6,6,0,0,0-6-6H56A14,14,0,0,0,42,48V92.69a13.9,13.9,0,0,0,4.1,9.89L58,114.49V218H40a6,6,0,0,0,0,12H216a6,6,0,0,0,0-12ZM68.24,107.76,54.58,94.1A2,2,0,0,1,54,92.69V48a2,2,0,0,1,2-2H74V72a6,6,0,0,0,6,6h32a6,6,0,0,0,6-6V46h20V72a6,6,0,0,0,6,6h32a6,6,0,0,0,6-6V46h18a2,2,0,0,1,2,2V92.69a2,2,0,0,1-.58,1.41l-13.66,13.66A6,6,0,0,0,186,112V218H158V168a30,30,0,0,0-60,0v50H70V112A6,6,0,0,0,68.24,107.76ZM146,218H110V168a18,18,0,0,1,36,0Z"/></svg></div>
+      <b>Old Town, Tallinn</b><span>Hanseatic quarter</span>
+    </div>
+    <div class="fact">
+      <div class="ic"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M74,88V40a6,6,0,0,1,12,0V88a6,6,0,0,1-12,0ZM214,40V224a6,6,0,0,1-12,0V174H152a6,6,0,0,1-6-6c0-4.41.68-108.25,59.64-133.51A6,6,0,0,1,214,40ZM202,50c-36.79,24.29-42.82,91.48-43.81,112H202ZM117.92,39a6,6,0,1,0-11.84,2L114,88.48a34,34,0,0,1-68,0L53.92,41a6,6,0,0,0-11.84-2l-8,48A6.61,6.61,0,0,0,34,88a46.06,46.06,0,0,0,40,45.6V224a6,6,0,0,0,12,0V133.6A46.06,46.06,0,0,0,126,88a6.61,6.61,0,0,0-.08-1Z"/></svg></div>
+      <b>Estonian breakfast</b><span>In the old reception rooms</span>
+    </div>
+  </div>
+</div>
+
+<section id="houses">
+  <div class="wrap split">
+    <div><figure><img src="https://www.threesistershotel.ee/img/three-houses-drawing.webp" alt="The three sisters, three medieval merchant houses on Pikk, illustrated"><figcaption>The three sisters on Pikk · an illustration</figcaption></figure></div>
+    <div>
+      <h2>Three sisters, side by side since 1362.</h2>
+      <p>The middle house was <strong>built for a Hanseatic merchant in 1362</strong>. Its neighbours followed over two centuries, each narrower than the last. Together they <strong>survived a fire, two occupations, and a long sleep.</strong></p>
+      <p>Restored between 1999 and 2003 and reopened, carefully, as one hotel — <strong>twenty-three rooms, no two alike</strong>, threaded through original beams, limestone reveals and a winding oak stair.</p>
+      <div style="margin-top:30px"><a class="btn btn-primary" href="#book">Reserve your room <span class="arw">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Every room tells a different story.</h2>
+      <p>Canopy beds and freestanding tubs, herringbone oak and limestone walls — <strong>twenty-three rooms and suites, no two alike.</strong></p>
+    </div>
+    <div class="gal">
+      <figure><div class="frame"><img src="https://www.threesistershotel.ee/img/DSCF4743.jpg" alt="A grand suite drawing room"></div><figcaption>A grand suite drawing room · herringbone oak</figcaption></figure>
+      <figure><div class="frame"><img src="https://www.threesistershotel.ee/img/DSCF4512.jpg" alt="A canopy bed beside a freestanding tub"></div><figcaption>A canopy bed &amp; freestanding tub</figcaption></figure>
+      <figure><div class="frame"><img src="https://www.threesistershotel.ee/img/DSCF4395.jpg" alt="The mezzanine sitting room"></div><figcaption>The mezzanine sitting room · original beams</figcaption></figure>
+      <figure><div class="frame"><img src="https://www.threesistershotel.ee/img/room-12.jpg" alt="A corner-house double on Pikk Street"></div><figcaption>A corner-house double · room №12</figcaption></figure>
+      <figure><div class="frame"><img src="https://www.threesistershotel.ee/img/DSCF4571.jpg" alt="A loft-suite sitting room"></div><figcaption>Under the rafters · a loft suite</figcaption></figure>
+      <figure><div class="frame"><img src="https://www.threesistershotel.ee/img/DSCF4947.jpg" alt="The courtyard between the houses"></div><figcaption>The courtyard, in spring</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Book direct. Get more.</h2>
+      <p>Four genuine perks you only get on this site — never through a third party. All applied automatically at checkout. No code needed.</p>
+    </div>
+    <div class="perks">
+      <div class="perk feature">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+        <h3>20% off, 3 nights+</h3>
+        <p>Stay three nights or more and get our <strong>best rate — applied automatically.</strong></p>
+      </div>
+      <div class="perk">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 16V8M8.5 11.5L12 8l3.5 3.5"/></svg></div>
+        <h3>Free upgrade</h3>
+        <p>We'll <strong>upgrade your room on arrival</strong> whenever one is free.</p>
+      </div>
+      <div class="perk">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Flexible arrival</h3><!-- clock kept: already matches -->
+        <p><strong>Settle in earlier and linger longer</strong>, whenever the day allows.</p>
+      </div>
+      <div class="perk">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Best rate, guaranteed</h3>
+        <p>We'll <strong>match any lower rate</strong> you find, anywhere.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px"><a class="btn btn-primary" href="#book">Book direct & save <span class="arw">→</span></a></div>
+  </div>
+</section>
+
+<section id="breakfast" class="band">
+  <div class="wrap split flip">
+    <div><figure><img src="https://www.threesistershotel.ee/img/breakfast-room-new.jpg" alt="The breakfast room beneath the painted marble-beam ceiling"><figcaption>The morning room · beneath the hand-painted beam ceiling</figcaption></figure></div>
+    <div>
+      <h2>Mornings in a 14th-century counting room.</h2>
+      <p>Breakfast is laid in the merchant houses' <strong>original reception rooms</strong> — limestone walls six centuries old, hand-painted beams overhead, the light coming low across Pikk Street.</p>
+      <p>The kitchen <strong>leans Estonian</strong>: black bread and farmhouse cheese, cold-smoked salmon, curd and forest honey, eggs to order, and a good spread of coffee and teas. <strong>Everything laid out, nothing rushed.</strong></p>
+      <p class="mini"><b>Weekdays</b> 07:00–10:30 · <b>Weekends</b> 07:30–11:00 · <b>€28</b> a head, add at booking.</p>
+    </div>
+  </div>
+</section>
+
+<section id="meetings">
+  <div class="wrap split">
+    <div><figure><img src="https://www.threesistershotel.ee/img/angel-room.jpg" alt="The Angel Room, one marble table beneath a 16th-century painted ceiling"><figcaption>The Angel Room · one marble table beneath a painted ceiling</figcaption></figure></div>
+    <div>
+      <h2>Meet beneath a 16th-century painted ceiling.</h2>
+      <p>The Angel Room is a <strong>private room</strong> on the ground floor of the corner house, under a painted ceiling uncovered during the restoration. It <strong>seats up to twelve</strong> around a single marble table — a boardroom that doesn't feel like one.</p>
+      <p><strong>Projector and fast wifi</strong> if you need them; coffee, lunch and the painted ceiling either way.</p>
+      <div style="margin-top:28px"><a class="btn btn-dark" href="mailto:reservations@threesistershotel.ee">Enquire about the Angel Room <span class="arw">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><h2>Guests can't stop talking.</h2>
+      <p>A <strong>4.8 average across more than a thousand stays</strong> — here's where they're saying it.</p>
+    </div>
+    <div class="reviews">
+      <div class="rev">
+        <div class="plat lg-booking">Booking.com</div>
+        <div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div>
+        <div class="score">9.1<small>/10</small></div><div class="q">"Wonderful"</div><div class="cnt">597 reviews</div>
+      </div>
+      <div class="rev">
+        <div class="plat lg-expedia">Expedia</div>
+        <div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div>
+        <div class="score">9.4<small>/10</small></div><div class="q">"Exceptional"</div><div class="cnt">210 reviews</div>
+      </div>
+      <div class="rev">
+        <div class="plat lg-google"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+        <div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div>
+        <div class="score">4.6<small>/5</small></div><div class="q">"Excellent"</div><div class="cnt">367 reviews</div>
+      </div>
+      <div class="rev">
+        <div class="plat lg-trip"><span class="owl"></span>Tripadvisor</div>
+        <div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div>
+        <div class="score">4.7<small>/5</small></div><div class="q">"Travellers' Choice"</div><div class="cnt">Read reviews</div>
+      </div>
+    </div>
+    <div style="margin-top:56px">
+      <div class="press-label">As featured in</div>
+      <div class="press">
+        <img class="plogo" data-name="Michelin Guide" src="logos/michelin.svg" alt="Michelin Guide">
+        <img class="plogo" data-name="Condé Nast Traveler" src="logos/conde-nast-traveler.svg" alt="Condé Nast Traveler">
+        <img class="plogo" data-name="The Telegraph" src="logos/telegraph.svg" alt="The Telegraph">
+        <img class="plogo" data-name="The Times" src="logos/the-times.svg" alt="The Times">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="bg"><img src="https://www.threesistershotel.ee/img/DSCF4947.jpg" alt="The courtyard between the houses"></div>
+  <div class="scrim"></div>
+  <div class="inner wrap">
+    <h2>Your Old Town story starts here.</h2>
+    <p>Best rate guaranteed, and every direct-booking perk applied automatically.</p>
+    <a class="btn btn-primary" href="#book">Check availability <span class="arw">→</span></a>
+  </div>
+</section>
+
+<section id="book" class="book-final">
+  <div class="wrap">
+    <h2>Book your stay.</h2>
+    <p style="max-width:54ch;margin:16px auto 0">Choose your dates — best rate guaranteed, and every direct-booking perk applied automatically.</p>
+    <div class="bookbar">
+      <div class="fld"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Check in</label><input type="date"></div>
+      <div class="fld"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Check out</label><input type="date"></div>
+      <div class="fld"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0M16 11a3 3 0 0 0 0-6M21 20a5 5 0 0 0-4-4.9"/></svg>Guests</label>
+        <select><option>2 guests</option><option>1 guest</option><option>3 guests</option><option>4 guests</option></select>
+      </div>
+      <button class="btn btn-primary">Check availability <span class="arw">→</span></button>
+    </div>
+    <p class="micro">Your dates carry straight through to our secure Cloudbeds booking engine — best rate guaranteed.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="mark">3S</span>THREE SISTERS</div>
+        <p style="max-width:40ch">Three medieval merchant houses at Pikk 71, quietly run as one boutique hotel in the Old Town of Tallinn.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p>Pikk 71<br>Tallinn 10133, Estonia<br><span style="font-size:14px;color:#b3aa99">Airport 5 km · Port 1 km</span></p>
+      </div>
+      <div>
+        <h4>Reception</h4>
+        <p><a href="mailto:reservations@threesistershotel.ee">reservations@threesistershotel.ee</a><br>+372 5880 6128</p>
+        <div style="margin-top:18px"><a class="btn btn-primary btn-sm" href="#book">Book a room <span class="arw">→</span></a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 The Three Sisters Hotel · Since 1362</span>
+      <span>Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('solid', window.scrollY > 80);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Press logos: show real logo file if present in /logos, else fall back to a styled wordmark.
+  document.querySelectorAll('img.plogo').forEach(img => {
+    img.addEventListener('error', () => {
+      const s = document.createElement('span');
+      s.className = 'm';
+      s.textContent = img.dataset.name;
+      img.replaceWith(s);
+    });
+  });
+</script>
+</body>
+</html>
