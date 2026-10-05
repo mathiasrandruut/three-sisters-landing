@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Google Ads feedback · Three Sisters Hotel &amp; Tallinn City Apartments</title>
+<title>Google Ads &amp; website feedback · Three Sisters Hotel &amp; Tallinn City Apartments</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -39,40 +39,45 @@
   summary::before{content:"+";font-family:var(--serif);font-size:24px;line-height:1;color:var(--maroon);width:16px;text-align:center}
   details[open] summary::before{content:"–"}
   details>:not(summary){padding-left:28px}
-  details p:last-child,details ul:last-child,details ol:last-child{margin-bottom:18px}
+  details p:last-child,details ul:last-child,details ol:last-child,details figure:last-child{margin-bottom:18px}
   .note{color:var(--muted);font-size:15px}
   .hl{font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1.5}
   .hl li{margin-bottom:4px}
+  figure{margin:18px 0 22px}
+  figure img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#fff}
+  figcaption{margin-top:10px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--muted)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <h1>Google Ads feedback</h1>
+  <h1>Google Ads &amp; website feedback</h1>
   <p class="by">Three Sisters Hotel &amp; Tallinn City Apartments · Mathias Randruut · 5 October 2026</p>
 
   <section class="short">
     <h2>Short version</h2>
     <ol>
       <li><strong>Keywords are fine.</strong> Leave them.</li>
-      <li><strong>Conversion tracking is missing.</strong> That is the biggest gap. There is no data to optimize on.</li>
+      <li><strong>Tracking is purchase-only, and not ideal.</strong> Track the "See availability" click first. That gives the account data to optimize on.</li>
       <li><strong>Ad text is factual.</strong> It should sell the experience, with social proof.</li>
+      <li><strong>The website is nice but under-optimized.</strong> Booking box too low, button too weak, logos buried. I'd bet on 1.5–2× more bookings from design alone.</li>
+      <li><strong>The booking flow has two breaks.</strong> An empty "select room" popup and a breakfast add-on with no photo.</li>
       <li><strong>Tallinn City Apartments overpays for brand terms.</strong> Cap bids at about €1.50.</li>
     </ol>
   </section>
 
   <section>
-    <h2><span class="n">1</span>Set up conversion tracking first</h2>
-    <p>Right now the Three Sisters account has no conversion data. Web purchases on threesistershotel.ee are not tracked, so there is nothing to optimize against.</p>
+    <h2><span class="n">1</span>Track the "See availability" click</h2>
+    <p>The Three Sisters account only has purchase tracking, and it is not ideal. Purchases are rare, so the account barely learns.</p>
     <h3>What I would do</h3>
     <ul>
-      <li>Track the CTA buttons – the clicks that start a room booking.</li>
-      <li>Feed those clicks into Google Ads as conversions.</li>
-      <li>Switch the bid strategy to <strong>Maximize conversions</strong>.</li>
+      <li>Track the moment someone enters their dates and clicks <strong>See availability</strong>.</li>
+      <li>Feed that click into Google Ads as a conversion.</li>
+      <li>Switch the bid strategy to <strong>Maximize conversions</strong>. Performance will be much better.</li>
     </ul>
     <details>
       <summary>Why this comes before everything else</summary>
-      <p>Phrase match is an in-between match type. It does not use Google's machine learning to the max. Once conversions are flowing in, we can broaden the keywords and let the system find bookers we are not reaching today. Without conversion data, broadening just spends more.</p>
+      <p>Phrase match is an in-between match type. It does not use Google's machine learning to the max. Once a steady conversion signal is flowing in, we can broaden the keywords and let the system find bookers we are not reaching today. Without that signal, broadening just spends more.</p>
       <p>Tracking is the one change that unlocks the others.</p>
     </details>
   </section>
@@ -118,9 +123,41 @@
   </section>
 
   <section>
-    <h2><span class="n">3</span>Landing page</h2>
-    <p>I rebuilt the landing page to show the same shift: experience first, features second. Same move for the ads and the homepage.</p>
-    <p><a href="../">Open the landing page concept →</a></p>
+    <h2><span class="n">3</span>The website</h2>
+    <p>It is a nice website. I like the upscale vibe, and some of it should be kept. The issue is conversion. I think bookings can go up <strong>1.5 to 2 times</strong> just by changing the design and making it work harder. Never overestimate the visitor. The design of one red button can move the numbers.</p>
+    <h3>What I would change</h3>
+    <ul>
+      <li><strong>Booking box higher.</strong> Right now it sits very low and does not pop from the background.</li>
+      <li><strong>A real button.</strong> The CTA does not look clickable. Older guests will not find it easy to use.</li>
+      <li><strong>Press logos up top.</strong> Better logo files, in a strip you see the moment you land.</li>
+      <li><strong>More social proof.</strong> Reviews, ratings, "guests loved" moments.</li>
+      <li><strong>More emotional copy.</strong> Today it feels understated. That is fine, but we can do better. Same direction as the ads above.</li>
+    </ul>
+    <p>I built a <a href="../">landing page concept</a> to get the point across. It is not fully thought out and it is more basic than the real site. It can be more upscale. But I will take the bet that more people book on it, and that is what matters in the end. Worth looking at other hotel sites that do a lot of direct sales too.</p>
+
+    <h3>The booking flow has two breaks</h3>
+    <p>This is the bigger problem. Checking availability lands on Cloudbeds, which is fine. But two things in that flow lose people.</p>
+    <details open>
+      <summary>Break 1: the empty "select room" popup</summary>
+      <p>When I click a room I have chosen, this white box pops up. All it shows is "Room 17" and a Select button. Why do I have to select again? It is confusing.</p>
+      <figure>
+        <img src="img/cloudbeds-select-room.png" alt="Cloudbeds popup: Select Accommodations, Historic Suite, Room 17, Select button, otherwise empty" width="1001" height="376">
+        <figcaption>The popup after picking a room. Nothing in it but a room number.</figcaption>
+      </figure>
+    </details>
+    <details open>
+      <summary>Break 2: breakfast with no photo</summary>
+      <p>The breakfast add-on has no picture. It does not inspire me to add it, and the page looks a little broken.</p>
+      <figure>
+        <img src="img/cloudbeds-breakfast-no-photo.png" alt="Cloudbeds add-ons page: Breakfast, 22.00 per guest per night, grey placeholder where the photo should be" width="875" height="841">
+        <figcaption>The add-ons step. A grey placeholder where the breakfast photo should be.</figcaption>
+      </figure>
+    </details>
+
+    <details>
+      <summary>Upsells for later</summary>
+      <p>Right now the only add-on is breakfast. Adding a few more – special services, treatments, fruit in the room, whatever you can provide – lifts the booking value. Done well, it can double the value of some bookings.</p>
+    </details>
   </section>
 
   <section>
@@ -142,8 +179,10 @@
     <h2>Order I would do it in</h2>
     <ol>
       <li>Bid cap on Tallinn City Apartments brand – a five-minute change.</li>
-      <li>Conversion tracking on the Three Sisters booking buttons.</li>
+      <li>Fix the two booking-flow breaks – a photo and a popup.</li>
+      <li>Track the "See availability" click.</li>
       <li>New ad text.</li>
+      <li>Website changes: booking box, button, logo strip, copy.</li>
       <li>Switch to Maximize conversions, then broaden keywords once the data is there.</li>
     </ol>
   </section>
